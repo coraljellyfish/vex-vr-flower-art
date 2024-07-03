@@ -1,0 +1,94 @@
+#region VEXcode Generated Robot Configuration
+import math
+import random
+from vexcode_vr import *
+
+# Brain should be defined by default
+brain=Brain()
+
+drivetrain = Drivetrain("drivetrain", 0)
+pen = Pen("pen", 8)
+pen.set_pen_width(THIN)
+left_bumper = Bumper("leftBumper", 2)
+right_bumper = Bumper("rightBumper", 3)
+front_eye = EyeSensor("frontEye", 4)
+down_eye = EyeSensor("downEye", 5)
+front_distance = Distance("frontdistance", 6)
+distance = front_distance
+magnet = Electromagnet("magnet", 7)
+location = Location("location", 9)
+
+#endregion VEXcode Generated Robot Configuration
+myVariable = 0
+shift = 0
+size = 0
+
+def main():
+    global myVariable, shift, size
+    drivetrain.set_drive_velocity(100, PERCENT)
+    drivetrain.set_turn_velocity(100, PERCENT)
+    pen.set_pen_color_rgb(242, 212, 66, 100)
+    pen.set_pen_width(EXTRA_THIN)
+    drivetrain.drive_for(FORWARD, 500, MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 500, MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    size = 0.4
+    shift = 12.5
+    octagonFlowerFinal_shift(shift)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 500, MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 500, MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    pen.set_pen_color_rgb(243, 187, 247, 100)
+    size = 0.7
+    shift = 30
+    octagonFlowerFinal_shift(shift)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 500, MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD, 650, MM)
+    drivetrain.turn_for(RIGHT, 180, DEGREES)
+    pen.set_pen_color_rgb(137, 240, 202, 100)
+    size = 0.3
+    shift = 22
+    octagonFlowerFinal_shift(shift)
+    drivetrain.drive_for(FORWARD, 300, MM)
+
+def octagonFlowerFinal_shift(octagonFlowerFinal_shift__shift):
+    global myVariable, shift, size
+    octagonFlower_size(size)
+    drivetrain.turn_for(RIGHT, octagonFlowerFinal_shift__shift, DEGREES)
+    octagonFlower_size(size)
+    drivetrain.turn_for(LEFT, octagonFlowerFinal_shift__shift, DEGREES)
+
+def octagonFlower_size(octagonFlower_size__size):
+    global myVariable, shift, size
+    pen.move(DOWN)
+    for repeat_count in range(8):
+        drivetrain.drive_for(FORWARD, (500 * octagonFlower_size__size), MM)
+        drivetrain.turn_for(RIGHT, 112.5, DEGREES)
+        drivetrain.drive_for(FORWARD, (383 * octagonFlower_size__size), MM)
+        drivetrain.turn_for(RIGHT, 112.5, DEGREES)
+        drivetrain.drive_for(FORWARD, (500 * octagonFlower_size__size), MM)
+        drivetrain.turn_for(RIGHT, 180, DEGREES)
+        wait(5, MSEC)
+    drivetrain.drive_for(FORWARD, (500 * octagonFlower_size__size), MM)
+    drivetrain.turn_for(RIGHT, 82.5, DEGREES)
+    for repeat_count2 in range(8):
+        drivetrain.drive_for(FORWARD, (221 * octagonFlower_size__size), MM)
+        drivetrain.turn_for(RIGHT, 60, DEGREES)
+        drivetrain.drive_for(FORWARD, (221 * octagonFlower_size__size), MM)
+        drivetrain.turn_for(LEFT, 15, DEGREES)
+        wait(5, MSEC)
+    drivetrain.turn_for(RIGHT, 97.5, DEGREES)
+    drivetrain.drive_for(FORWARD, (500 * octagonFlower_size__size), MM)
+    drivetrain.turn_for(RIGHT, 180, DEGREES)
+    pen.move(UP)
+
+def when_started1():
+    global myVariable, shift, size
+    main()
+
+vr_thread(when_started1)
